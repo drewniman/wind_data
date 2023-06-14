@@ -15,12 +15,16 @@
                 setTimeout(MQTTconnect, reconnectTimeout);
             }
             function onMessageArrived(msg){
-                out_msg="Message received "+msg.payloadString+"<br>";
-                out_msg=out_msg+"Message received Topic "+msg.destinationName;
-                console.log(out_msg);
+                // out_msg="Message received "+msg.payloadString+"<br>";
+                // out_msg=out_msg+"Message received Topic "+msg.destinationName;
+                // console.log(out_msg);
+                wind_data = msg.payloadString;
+                fixed_json = wind_data.replace('{"w', '"w');
+                console.log("My json data: " + wind_data + "}");
+                console.log("My fixed json data: " + fixed_json + "}");
             }
           
-           function onConnect() {
+            function onConnect() {
             // Once a connection has been made, make a subscription and send a message.
       
                 console.log("Connected ");
